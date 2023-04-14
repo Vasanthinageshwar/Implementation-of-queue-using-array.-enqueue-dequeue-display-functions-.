@@ -1,0 +1,101 @@
+2.Implementation of queue using array.(enqueue, dequeue, display
+functions).
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define maxsize 5
+void insert();
+void delete();
+void display();
+int front = -1, rear = -1;
+int queue[maxsize];
+void main ()
+{
+int choice;
+while(choice != 4)
+{
+printf(&quot;\n1.insert an element\n2.Delete an element\n3.Display the queue\n&quot;);
+printf(&quot;\nEnter your choice &quot;);
+scanf(&quot;%d&quot;,&amp;choice);
+switch(choice)
+{
+case 1:
+insert();
+break;
+case 2:
+delete();
+break;
+case 3:
+display();
+break;
+
+default:
+printf(&quot;\nEnter valid choice??\n&quot;);
+}
+}
+}
+void insert()
+{
+int item;
+printf(&quot;\nEnter the element\n&quot;);
+scanf(&quot;\n%d&quot;,&amp;item);
+if(rear == maxsize-1)
+{
+printf(&quot;\nOVERFLOW\n&quot;);
+return;
+}
+if(front == -1 &amp;&amp; rear == -1)
+{
+front = 0;
+rear = 0;
+}
+else
+{
+rear = rear+1;
+}
+queue[rear] = item;
+printf(&quot;\nValue inserted &quot;);
+
+}
+void delete()
+{
+int item;
+
+if (front == -1 || front &gt; rear)
+{
+printf(&quot;\nUNDERFLOW\n&quot;);
+return;
+
+}
+else
+{
+item = queue[front];
+if(front == rear)
+{
+front = -1;
+rear = -1 ;
+}
+else
+{
+front = front + 1;
+}
+printf(&quot;\nvalue deleted &quot;);
+}
+
+}
+
+void display()
+{
+int i;
+if(rear == -1)
+{
+printf(&quot;\nEmpty queue\n&quot;);
+}
+
+else
+{ printf(&quot;\nprinting values .....\n&quot;);
+for(i=front;i&lt;=rear;i++)
+{
+printf(&quot;\n%d\n&quot;,queue[i]);
+}
+}
+}
